@@ -85,9 +85,6 @@ poetry shell
 #### Create superuser
     > python manage.py createsuperuser
 
-#### To get the sql info in the terminal
-    > python manage.py sqlmigrate app_name migration_name
-
 #### To register the app in the admin.py
 ```python
     from django.apps import apps
