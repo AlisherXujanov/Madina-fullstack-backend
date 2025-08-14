@@ -1,25 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% block title %}
+  <title>Update Post</title>
+{% endblock %}
 
-<body>
+{% block content %}
+  <h1>Update post</h1>
 
-    <h1>Update post</h1>
-
-    <div class="container">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-
-
-</body>
-
-</html>
+  {% include 'form_snippets.html' with form=form %}
+{% endblock %}
