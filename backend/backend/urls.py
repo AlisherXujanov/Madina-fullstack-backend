@@ -16,11 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import home, update_post, delete_post
+from posts.views import home, create_post, post_details, update_post, delete_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path("", home, name="home"),  # landing page
+    path("create_post/", create_post, name="create_post"),
+    path("post_details/<int:pk>", post_details, name="post_details"), 
     path("update_post/<int:pk>", update_post, name="update_post"), 
     path("delete_post/<int:pk>", delete_post, name="delete_post") 
 ]

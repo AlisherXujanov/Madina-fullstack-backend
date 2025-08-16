@@ -9,12 +9,26 @@ from .forms import PostForm
 
 def home(request):
     context = {
-        "title": "This is title",
-        "text": "What a beautiful day it is!",
         "posts": Posts.objects.all(),
         "form": PostForm()
     }  # MUST be a dict
+    return render(request, "home.html", context)
 
+
+def post_details(request, pk: int):
+    post = Posts.objects.get(pk=pk)
+    context = {
+        "post": post,
+    }
+    return render(request, "post_details.html", context)
+
+
+
+
+def create_post(request):
+    context = {
+        "form": PostForm()
+    }
     if request.method == "POST":
         # initialize the form with the data from the request
         form = PostForm(request.POST)
@@ -27,7 +41,7 @@ def home(request):
         else:
             print('ERROR FORM INVALID')
 
-    return render(request, "home.html", context)
+    return render(request, "create_post.html", context)
 
 
 def update_post(request, pk: int):
@@ -37,7 +51,6 @@ def update_post(request, pk: int):
         "post": post,
         "form": form
     }
-
     if request.method == "POST":
         # initialize the form with the data from the request
         form = PostForm(request.POST, instance=post)

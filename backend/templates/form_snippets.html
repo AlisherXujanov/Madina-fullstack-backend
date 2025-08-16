@@ -1,7 +1,10 @@
-<div class="container">
+{% load django_bootstrap5 %}
+
+<div class="container py-4">
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
+        <!-- {{ form.as_p }} -->
+        {% bootstrap_form form %}
+        <input type="submit" value="Submit" class="btn btn-success"/>
     </form>
 </div>
